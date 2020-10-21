@@ -1,7 +1,7 @@
 #Vstup uživatele: input
 
-slovo=input("Napiš něco:")
-print("Tvoje slovo je "+slovo)
+vstup=input("Napiš něco:")
+print("Tvoje slovo je "+vstup)
 
 cislo=int(input("Napiš číslo: "))
 desetinasobek=cislo*10
