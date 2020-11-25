@@ -12,23 +12,28 @@ size = 500
 cvs=Canvas(window, bg="#ffffff", width=size, height=size)
 cvs.pack()
 
-randomcolor = "#"+str(random.randint(100000, 999999))	# creates random hex code (for now: omitting #000000-#099999 and #aaaaaa-#ffffff)
+
+randomcolor = ""
+
+list_of_hex_characters = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+position_in_list = random.randint(0,15)
+
+for i in range(6):
+	hex_char = list_of_hex_characters[position_in_list]
+	randomcolor+=hex_char
+	position_in_list = random.randint(0,15)
+
+randomcolor = "#"+randomcolor
+print(randomcolor)
+
 
 def draw_symmetric_lines(start_X, start_Y, end_X, end_Y, color):
-	cvs.create_line(start_X, start_Y, end_X, end_Y, fill=color)
+	cvs.create_line(start_X, start_Y, end_X, end_Y, fill=color, width=3)
+	cvs.create_line(size-start_X, start_Y, size-end_X, end_Y, fill=color, width=3)
+	cvs.create_line(start_X, size-start_Y, end_X, size-end_Y, fill=color, width=3)
+	cvs.create_line(size-start_X, size-start_Y, size-end_X, size-end_Y, fill=color, width=3)
 
-
-	cvs.create_line(size-start_X, start_Y, size-end_X, end_Y, fill=color)
-
-	
-	cvs.create_line(start_X, size-start_Y, end_X, size-end_Y, fill=color)
-
-	
-	cvs.create_line(size-start_X, size-start_Y, size-end_X, size-end_Y, fill=color)
-
-	
-	
-for i in range(2):
+for i in range(7):
 	draw_symmetric_lines(random.randint(0,size),random.randint(0,size),random.randint(0,size),random.randint(0,size),randomcolor)
 	
 window.mainloop()
