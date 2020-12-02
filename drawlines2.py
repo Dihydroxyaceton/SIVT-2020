@@ -26,17 +26,17 @@ def confirm():
 		seed = random.randint(0, 10000000)
 	random.seed(seed)
 	print("seed: "+str(seed))
-	createRandomcolor()
 	listOfUsedSeeds.append(seed)
+	createRandomcolor()
 	
 def createRandomcolor():
 	randomcolor = "#"
-	list_of_hex_characters = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
-	position_in_list = random.randint(0,15)
+	listOfHexCharacters = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+	positionInList = random.randint(0,15)
 	for i in range(6):
-		hex_char = list_of_hex_characters[position_in_list]
+		hex_char = listOfHexCharacters[positionInList]
 		randomcolor+=hex_char
-		position_in_list = random.randint(0,15)
+		positionInList = random.randint(0,15)
 	startDrawing(0, random.randint(0,canvasHeight), 10, random.randint(0,canvasHeight), randomcolor, lineThickness)
 	
 def startDrawing(start_X, start_Y, end_X, end_Y, color, thickness):
@@ -59,9 +59,10 @@ def undoLastMove():
 	else:
 		print("cannot undo: canvas is already clear")
 	
-def clearCanvas():
+def resetCanvas():
 	cvs.delete("all")
-	print("clear")
+	print("reset")
+	listOfUsedSeeds.clear()
 	
 tkWindow=Tk()
 cvs=Canvas(tkWindow, bg="#ffffff", width=canvasWidth, height=canvasHeight)
@@ -72,7 +73,7 @@ seedEnterButton=Button(tkWindow,text="GENERATE A LINE using SEED (leave empty fo
 seedEnterButton.pack()
 undoButton=Button(tkWindow,text="UNDO",command=undoLastMove,height=2,width=60) # button to undo last move
 undoButton.pack()
-clearButton=Button(tkWindow,text="CLEAR CANVAS",command=clearCanvas,height=2,width=60) # button to clear the canvas
+clearButton=Button(tkWindow,text="RESET (cannot be undone)",command=resetCanvas,height=2,width=60) # button to clear the canvas
 clearButton.pack()
 
 tkWindow.mainloop()
