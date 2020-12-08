@@ -5,6 +5,7 @@ import random
 seed=0
 randomcolor = "#000000"
 listOfUsedSeeds = []
+lineType=1
 
 '''customisable values:'''
 canvasWidth=500
@@ -37,15 +38,27 @@ def createRandomcolor():
 		hex_char = listOfHexCharacters[positionInList]
 		randomcolor+=hex_char
 		positionInList = random.randint(0,15)
-	startDrawing(0, random.randint(0,canvasHeight), 10, random.randint(0,canvasHeight), randomcolor, lineThickness)
+	directionDesignator = random.randint(0, 1)
+	if directionDesignator == 0:
+		startDrawingHorizontal(0, random.randint(0,canvasHeight), 10, random.randint(0,canvasHeight), randomcolor, lineThickness)
+	else:
+		startDrawingVertical(random.randint(0,canvasWidth), 0, random.randint(0,canvasWidth), 10, randomcolor, lineThickness)
 	
-def startDrawing(start_X, start_Y, end_X, end_Y, color, thickness):
+def startDrawingHorizontal(start_X, start_Y, end_X, end_Y, color, thickness):
 	for i in range(100):
 		cvs.create_line(start_X, start_Y, end_X, end_Y, fill=color, width=thickness)
 		start_X+=(canvasWidth/100)
 		start_Y+=random.randint(-2, 2)
 		end_X+=(canvasWidth/100)
 		end_Y+=random.randint(-2, 2)
+
+def startDrawingVertical(start_X, start_Y, end_X, end_Y, color, thickness):
+	for i in range(100):
+		cvs.create_line(start_X, start_Y, end_X, end_Y, fill=color, width=thickness)
+		start_X+=random.randint(-2, 2)
+		start_Y+=(canvasWidth/100)
+		end_X+=random.randint(-2, 2)
+		end_Y+=(canvasWidth/100)
 
 def undoLastMove():
 	cvs.delete("all")
