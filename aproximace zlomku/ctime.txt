@@ -1,0 +1,17 @@
+aproximace čísla pí
+
+
+uživatel zadá číslo
+program vypíše několik možností aproximace čísla
+
+různé jmenovatele
+
+co nejlepší
+	co nejlepší aproximace
+	co nejméně cifer
+
+
+
+př.:
+uživatel zadá číslo pí
+program vypíše "3/1, 22/7, 355/113"
