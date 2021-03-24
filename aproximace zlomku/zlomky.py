@@ -2,8 +2,8 @@ import math
 
 inputnumber = float(input("enter your number: "))
 
-tolerance = 0.002
-
+tolerance = 0.001
+maxnumber = 500
 
 # čitatel = numerator
 # jmenovatel = nominator
@@ -23,8 +23,8 @@ def check_tolerance():
 			ok_results.append(str(numerator)+"/"+str(nominator))
 
 
-for i in range(500):
-	for i in range(500):
+for i in range(maxnumber):
+	for i in range(maxnumber):
 		outcome = numerator / nominator
 		check_tolerance()
 		#print(numerator)
