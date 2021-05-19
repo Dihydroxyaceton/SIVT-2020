@@ -34,19 +34,19 @@ def load_csv(file_name, selected_columns):
 
 
 def plot_silouetthe():
-    data = load_csv('praha.csv', [0,1])
+    data = load_csv('graf.csv', [0,1])
     x = data[:,0]
     y = 10-data[:,1]
     plt.plot(x,y)
 
-def plot_shadow():
-    data2 = load_csv('praha.csv', [0,1])
+def plot_water():
+    data2 = load_csv('graf.csv', [0,1])
     x = 1+data2[:,0]
     y = data2[:,1]
     plt.plot(x,y)
 
 def plot_text():
-    data = load_csv('prahatext.csv', [0,1])
+    data = load_csv('text.csv', [0,1])
     x = data[:,0]
     y = 2+data[:,1]
     plt.plot(x,y)
@@ -55,6 +55,6 @@ def plot_text():
 #plot_sinus()
 #plot_x_squared()
 plot_silouetthe()
-plot_shadow()
+plot_water()
 plot_text()
 plt.show()
